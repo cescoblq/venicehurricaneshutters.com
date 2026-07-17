@@ -1,0 +1,100 @@
+hero:
+  h1: "Hurricane Shutters in Venice, FL — Compare Free Quotes From Local Installers"
+  subtitle: "Get matched with licensed local hurricane shutter installers serving Venice, Venice Island, Golden Beach and Nokomis. Free, no-obligation estimates on storm panels, accordion, and roll-down shutters — built for Sarasota County's wind zone."
+  reassurance: "✓ 100% free, no obligation &nbsp; ✓ Licensed local installers only &nbsp; ✓ Your info is never sold to unrelated third parties"
+
+trustbar: "Free matching service · Licensed &amp; insured local installers · Serving Venice &amp; Sarasota County"
+
+steps:
+  title: "How it works: from request to quote in 3 steps"
+  items:
+    - title: "1. Tell us about your project"
+      text: "Fill out the short form: ZIP code, shutter type you're considering, and a bit about your home. The more complete your request, the more accurate the quotes you'll receive."
+    - title: "2. Get connected with local installers"
+      text: "We match your request with licensed hurricane shutter installers who work in the Venice area. They'll typically reach out within 24 hours to schedule a free, in-home estimate."
+    - title: "3. Compare and decide — no pressure"
+      text: "Compare pricing, shutter types, and timelines at your own pace. There's no obligation to hire anyone, and no cost to you at any point."
+  transparency: "Venice Hurricane Shutters is an independent referral service. We do not manufacture or install shutters ourselves — we connect homeowners, free of charge, with licensed local hurricane shutter installers. The service is funded by the participating installers, never by you."
+
+cost:
+  title: "What do hurricane shutters cost in Venice?"
+  intro: "Pricing depends mainly on shutter type (storm panel, accordion, roll-down/motorized, or colonial/Bahama), opening size, and how many openings need coverage. Approximate national market ranges, installed:"
+  rows:
+    - type: "Storm panels (aluminum or polycarbonate)"
+      size: "per opening, installed"
+      price: "$150 – $400"
+    - type: "Accordion shutters"
+      size: "per opening, installed"
+      price: "$700 – $2,500"
+    - type: "Roll-down (motorized) shutters"
+      size: "per opening, installed"
+      price: "$2,500 – $5,500"
+    - type: "Whole-home accordion shutter package"
+      size: "10–15 openings, single-story"
+      price: "$8,000 – $20,000"
+  note: "These are approximate national market ranges, not a quote for your specific home. Actual pricing in the Venice area depends on your home's opening sizes and count, shutter type, wall material (masonry vs. frame), and current Florida Building Code wind-load requirements for your exact address (Sarasota County design wind speeds run roughly 140-160 mph, higher near the coast, and the whole county sits inside the state's Wind-Borne Debris Region — every opening needs protection). Ask each installer whether your project may qualify for a My Safe Florida Home grant (up to $10,000) and for a wind mitigation insurance discount once the work is permitted and inspected — both can meaningfully offset the upfront cost. Comparing multiple quotes is the best way to see the real range for your home."
+  cta: "Compare free quotes and see your real numbers →"
+
+benefits:
+  title: "Why hurricane shutters are one of the highest-value upgrades in Venice"
+  items:
+    - title: "Code-required storm protection"
+      text: "All of Sarasota County sits inside the Florida Building Code's Wind-Borne Debris Region — every exterior opening on a home needs impact protection, by code, whether that's code-compliant shutters or impact glass."
+    - title: "The lowest-cost way to meet code"
+      text: "Compared to whole-home impact window replacement, shutters are typically the most budget-friendly way to bring every opening on a home into compliance, especially for older masonry homes on Venice Island."
+    - title: "Potential insurance savings"
+      text: "Permitted, code-compliant shutters on every opening can qualify for the largest single credit on Florida's wind mitigation inspection form — ask your insurer how a completed wind mitigation report could affect your windstorm premium."
+    - title: "May qualify for state grant assistance"
+      text: "Eligible homeowners may qualify for a My Safe Florida Home grant of up to $10,000 toward hurricane shutters — ask your installer to help you check eligibility."
+
+social:
+  title: "What Venice homeowners are asking about since Hurricane Milton"
+  text: "Hurricane Milton made landfall near Siesta Key in Sarasota County on October 9, 2024 — the first hurricane to hit the county since 1944 — bringing storm surge of 6-9 feet from Venice south to Boca Grande and near-100 mph wind gusts to Venice itself, arriving barely two weeks after Hurricane Helene had already flooded the same coastline. Since then, wind mitigation has moved from a 'someday' project to a near-term priority for many homeowners in Venice Island, Golden Beach, and Nokomis. The most common reason homeowners request quotes isn't storm damage already sustained — it's wanting permitted, insurance-friendly opening protection in place before the next season."
+
+local:
+  title: "Hurricane shutters in Venice: what local conditions mean for your project"
+  intro: "Sarasota County has some of the higher wind-load requirements on Florida's Gulf coast, and Venice homeowners are still working through recovery from the Helene/Milton one-two punch of 2024. Here's what that means in practice for a hurricane shutter project."
+  points:
+    - title: "Every opening must be protected"
+      text: "Because Sarasota County's design wind speed (roughly 140-160 mph, higher near the coast) puts the whole county inside the Wind-Borne Debris Region, Florida Building Code Section 1609.5.2 requires impact-rated glazing or code-compliant shutters on every exterior opening — there's no partial-compliance option for a full storm-hardening project."
+    - title: "Permits are required, and matter later"
+      text: "Sarasota County requires a building permit for shutter installation, and units need a matching Florida Product Approval number for the property's wind zone. A licensed local installer typically handles this as part of the job — unpermitted shutters won't qualify for the insurance discount below, and can create issues when you sell."
+    - title: "Hurricane Milton changed the calculus"
+      text: "Milton's October 2024 landfall near Siesta Key — the first hurricane to hit Sarasota County since 1944 — brought 6-9 feet of storm surge from Venice south to Boca Grande and flooding that reached electrical outlets in some Golden Beach homes. Many homeowners in Venice Island, Golden Beach and Nokomis are now prioritizing wind mitigation ahead of future storm seasons rather than after damage occurs."
+    - title: "My Safe Florida Home grant"
+      text: "Eligible Florida homeowners (income-qualified, homestead exemption, home permitted before 2008, insured value under $700,000) may qualify for a state grant of up to $10,000 toward hurricane shutters and other hardening work — this is a statewide program, not unique to Venice, so ask your installer to help confirm eligibility."
+    - title: "Insurance credit is all-or-nothing"
+      text: "On Florida's wind mitigation inspection form, the opening-protection credit only applies if every opening on the home is protected — a home with shutters on most, but not all, openings gets no credit in that category. Worth planning the full scope with your installer rather than doing it opening by opening."
+  outro: "Not sure what applies to your specific property, or whether Venice Island's historic-district rules affect your shutter style? The installers who provide your quotes work in the Venice area every day and can walk you through the permit, code, and insurance specifics for your exact address."
+  sources:
+    - label: "Sarasota County — Building & permitting"
+      url: "https://www.scgov.net/government/planning-and-development-services/building"
+    - label: "My Safe Florida Home — official program site"
+      url: "https://mysafeflhome.com/"
+    - label: "Florida DFS — Premium Discounts for Hurricane Loss Mitigation (consumer guide)"
+      url: "https://www.myfloridacfo.com/docs-sf/consumer-services-libraries/consumerservices-documents/understanding-coverage/consumer-guides/premium-discounts-for-hurricane-loss-mitigation.pdf"
+    - label: "Sarasota County — one year after Hurricane Milton's landfall"
+      url: "https://www.scgov.net/Home/Components/News/News/8261/23"
+
+faq:
+  title: "Frequently asked questions"
+  items:
+    - q: "Is this service really free?"
+      a: "Yes. You never pay anything for the quotes or the matching service. We're compensated by the participating installers when we send them a qualified request — that has no effect on the price you're quoted."
+    - q: "Am I obligated to hire anyone?"
+      a: "No. The quotes you receive are completely no-obligation. You decide whether, when, and with which installer to move forward, or with none at all."
+    - q: "Do I need a permit to install hurricane shutters in Sarasota County?"
+      a: "Yes — Sarasota County requires a building permit for shutter installation regardless of type (panel, fabric, accordion, or roll-down), and installed units need a matching Florida Product Approval number. A licensed local installer will typically handle this as part of the project. Confirm the specifics for your address with the installer and, if needed, Sarasota County Planning & Development Services directly."
+    - q: "Are you a shutter installer or manufacturer?"
+      a: "No. Venice Hurricane Shutters is an independent referral service — we connect you with licensed local installers who sell and install hurricane shutters. We don't perform installation work ourselves."
+    - q: "Could I qualify for the My Safe Florida Home grant?"
+      a: "Possibly — the program offers up to $10,000 toward hardening work for eligible income-qualified homeowners with a homestead exemption. Eligibility rules can change between funding cycles, so ask your installer to help you check current status, or visit the official My Safe Florida Home site."
+    - q: "What happens to my information?"
+      a: "Your information is shared only with the installers who prepare your quote, and is never sold to unrelated third parties. See our privacy policy for full details, including how we use consent and communication technology."
+    - q: "How long does a hurricane shutter project typically take?"
+      a: "Expect roughly 1-2 weeks between your first quote and a scheduled start, depending on installer availability and permit processing, and typically 1-2 days of on-site installation for a whole-home accordion or roll-down package, depending on the number of openings."
+
+finalcta:
+  title: "Ready to compare quotes?"
+  text: "Request your free, no-obligation hurricane shutter quotes for your Venice home today. Licensed local installers typically respond within 24 hours."
+  btn: "Get my free quotes →"

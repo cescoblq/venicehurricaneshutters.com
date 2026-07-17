@@ -1,0 +1,15 @@
+<section id="lead-local" class="lead-local seo-content">
+  <div class="container">
+    <h2 class="title is-3">{{ .Site.Data.lead.local.title }}</h2>
+    <p>{{ .Site.Data.lead.local.intro | safeHTML }}</p>
+    <ul class="lead-local-points">
+      {{ range .Site.Data.lead.local.points }}
+      <li><strong>{{ .title }}:</strong> {{ .text }}</li>
+      {{ end }}
+    </ul>
+    <p>{{ .Site.Data.lead.local.outro }}</p>
+    <p class="lead-local-sources">Official sources:
+      {{ range $i, $s := .Site.Data.lead.local.sources }}{{ if $i }} &middot; {{ end }}<a href="{{ $s.url }}" rel="nofollow">{{ $s.label }}</a>{{ end }}
+    </p>
+  </div>
+</section>

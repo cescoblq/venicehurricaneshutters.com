@@ -1,0 +1,14 @@
+<section id="lead-steps" class="lead-steps">
+  <div class="container">
+    <h2 class="title is-3">{{ .Site.Data.lead.steps.title }}</h2>
+    <div class="columns">
+      {{ range .Site.Data.lead.steps.items }}
+      <div class="column is-4">
+        <h4>{{ .title }}</h4>
+        <p>{{ .text }}</p>
+      </div>
+      {{ end }}
+    </div>
+    <p class="lead-transparency"><em>{{ .Site.Data.lead.steps.transparency }}</em></p>
+  </div>
+</section>

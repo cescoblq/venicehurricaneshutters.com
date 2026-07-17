@@ -1,0 +1,34 @@
+{{/*
+  Site-level override of the theme's partials/meta.html.
+  Kept: theme's Google Analytics passthrough (no-op without Site.Params.googleAnalytics set).
+  Added: proper meta description fallback chain, canonical, hreflang, robots noindex on 404,
+  basic OpenGraph/Twitter tags — none of this existed in the stock partial, which only had a
+  hardcoded placeholder description.
+*/}}
+{{ template "_internal/google_analytics.html" . }}
+
+{{ with .Description -}}
+  <meta name="description" content="{{ . }}">
+{{ else -}}
+  {{ with .Summary | plainify -}}
+    <meta name="description" content="{{ . }}">
+  {{ else -}}
+    <meta name="description" content="{{ .Site.Params.description }}">
+  {{ end -}}
+{{ end -}}
+
+{{ if or (.Params.noindex) (eq .Kind "404") }}
+  <meta name="robots" content="noindex">
+{{ end }}
+
+<link rel="canonical" href="{{ .Permalink | safeURL }}">
+<link rel="alternate" hreflang="en" href="{{ .Permalink | safeURL }}">
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink | safeURL }}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">

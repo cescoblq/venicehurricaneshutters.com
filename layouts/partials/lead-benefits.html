@@ -1,0 +1,25 @@
+<section id="lead-benefits" class="lead-benefits">
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column is-6">
+        <h2 class="title is-3">{{ .Site.Data.lead.benefits.title }}</h2>
+        <ul>
+          {{ range .Site.Data.lead.benefits.items }}
+          <li><strong>{{ .title }}</strong> — {{ .text }}</li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="column is-6">
+        <figure class="image lead-benefits-img-wrap">
+          <img src="{{ `images/lead/placeholder-hurricane-shutters.svg` | relURL }}" alt="Hurricane shutters installed on a Florida home" class="lead-benefits-img" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="lead-social" class="lead-social">
+  <div class="container">
+    <h2 class="title is-3">{{ .Site.Data.lead.social.title }}</h2>
+    <p>{{ .Site.Data.lead.social.text }}</p>
+  </div>
+</section>

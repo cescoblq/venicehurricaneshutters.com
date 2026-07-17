@@ -1,0 +1,82 @@
+{{/*
+  Site-level override of the theme's (hugo-fresh) _default/baseof.html.
+  Reasons for overriding rather than using the stock file:
+    - Need a Content-Security-Policy meta tag that allows Cloudflare Turnstile + ActiveProspect
+      TrustedForm (theme has no CSP partial at all).
+    - Need the Turnstile widget script loaded site-wide (it's referenced from partials/lead-form.html).
+    - Need hand-written WebSite + Service (+ home-only FAQPage) JSON-LD. CDC rule: no LocalBusiness
+      schema anywhere on this site (no verifiable physical business address for a lead-referral site).
+  Still reuses the theme's own css.html / javascript.html partials (Bulma/Fresh pipeline, feather
+  icons, jquery) unmodified — no need to fork those.
+*/}}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://api.trustedform.com https://cdn.trustedform.com https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; img-src 'self' data:; object-src 'none'; base-uri 'none'">
+
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+
+    {{ partial "meta.html" . }}
+    {{ partial "css.html" . }}
+
+    <!-- Cloudflare Turnstile (anti-bot on the lead form). Widget itself is rendered in partials/lead-form.html -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": {{ .Site.Title | jsonify | safeJS }},
+      "url": {{ .Site.BaseURL | jsonify | safeJS }}
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Hurricane shutter installer referral / free quote matching",
+      "provider": {
+        "@type": "Organization",
+        "name": {{ .Site.Title | jsonify | safeJS }}
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Venice, FL"
+      },
+      "description": {{ .Site.Params.description | jsonify | safeJS }}
+    }
+    </script>
+    {{ if .IsHome }}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {{ range $i, $item := .Site.Data.lead.faq.items }}{{ if $i }},{{ end }}
+        {
+          "@type": "Question",
+          "name": {{ $item.q | jsonify | safeJS }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ $item.a | jsonify | safeJS }}
+          }
+        }
+        {{ end }}
+      ]
+    }
+    </script>
+    {{ end }}
+  </head>
+  <body>
+    {{ block "main" . }}
+    {{ end }}
+
+    <!-- Back To Top Button -->
+    <div id="backtotop"><a href="#"></a></div>
+
+    {{ partial "javascript.html" . }}
+  </body>
+</html>

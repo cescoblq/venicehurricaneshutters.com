@@ -1,0 +1,17 @@
+<section id="lead-hero" class="lead-hero">
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column is-7">
+        <h1 class="title is-1">{{ .Site.Data.lead.hero.h1 }}</h1>
+        <p class="lead-subtitle">{{ .Site.Data.lead.hero.subtitle | safeHTML }}</p>
+      </div>
+      <div class="column is-5">
+        {{ partial "lead-form.html" (dict "step" 1 "context" .) }}
+      </div>
+    </div>
+    <p class="lead-reassurance">{{ .Site.Data.lead.hero.reassurance | safeHTML }}</p>
+  </div>
+</section>
+<section id="trust-bar" class="trust-bar">
+  <div class="container"><p>{{ .Site.Data.lead.trustbar | safeHTML }}</p></div>
+</section>

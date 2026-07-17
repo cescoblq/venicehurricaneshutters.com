@@ -1,0 +1,13 @@
+<section id="lead-faq" class="lead-faq">
+  <div class="container">
+    <h2 class="title is-3">{{ .Site.Data.lead.faq.title }}</h2>
+    <div class="lead-faq-items">
+      {{ range .Site.Data.lead.faq.items }}
+      <div class="lead-faq-item">
+        <h4>{{ .q }}</h4>
+        <p>{{ .a }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

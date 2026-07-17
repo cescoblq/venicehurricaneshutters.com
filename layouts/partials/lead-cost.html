@@ -1,0 +1,20 @@
+<section id="lead-cost" class="lead-cost">
+  <div class="container">
+    <h2 class="title is-3">{{ .Site.Data.lead.cost.title }}</h2>
+    <p>{{ .Site.Data.lead.cost.intro }}</p>
+    <div class="table-container">
+      <table class="table is-fullwidth lead-cost-table">
+        <thead>
+          <tr><th>Type of shutter</th><th>Scope</th><th>Approximate price (installed)</th></tr>
+        </thead>
+        <tbody>
+          {{ range .Site.Data.lead.cost.rows }}
+          <tr><td>{{ .type }}</td><td>{{ .size }}</td><td>{{ .price }}</td></tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <p class="lead-cost-note">{{ .Site.Data.lead.cost.note }}</p>
+    <a href="#lead-hero" class="button cta rounded primary-btn raised">{{ .Site.Data.lead.cost.cta }}</a>
+  </div>
+</section>

@@ -1,0 +1,177 @@
+<form class="lead-form" id="lead-form-{{ .step }}" method="POST" action="{{ .context.Site.Params.leadFormAction | default "#" }}">
+  <input type="hidden" name="site" value="{{ .context.Site.BaseURL }}">
+
+  {{/*
+    TODO — TrustedForm (ActiveProspect), see TODO-DEPLOY.md.
+    Most lead buyers in the US home-services space (78% per the debouches research, 53-carto-debouches-usa.md §4)
+    require a TrustedForm consent certificate before they'll accept/pay for a lead. The account does not exist
+    yet (François needs to sign up at activeprospect.com). Once created, paste ActiveProspect's standard adapter
+    snippet here, ABOVE the form, e.g.:
+
+    <script type="text/javascript">
+      (function() {
+        var tf = document.createElement('script');
+        tf.type = 'text/javascript'; tf.async = true;
+        tf.src = ("https:" == document.location.protocol ? 'https' : 'http') +
+          '://api.trustedform.com/trustedform.js?field=xxTrustedFormCertUrl&ping_field=xxTrustedFormPingUrl&l=' +
+          new Date().getTime() + Math.random();
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(tf, s);
+      })();
+    </script>
+    <noscript><img src="https://api.trustedform.com/ns.gif" /></noscript>
+
+    The snippet auto-populates the hidden xxTrustedFormCertUrl field below on page load/submit.
+    Until the account exists, this hidden field will always submit empty — the n8n webhook and
+    any downstream buyer integration must tolerate that during the pre-launch period.
+  */}}
+  <input type="hidden" name="xxTrustedFormCertUrl" id="xxTrustedFormCertUrl_{{ .step }}" value="">
+
+  <div class="lead-form-step lead-form-step-1">
+    <label class="label">ZIP code
+      <input class="input" type="text" name="zip" placeholder="34285" pattern="[0-9]{5}" maxlength="5" required>
+    </label>
+    <label class="label">What best describes your project?
+      <div class="select is-fullwidth">
+        <select name="project_type" required>
+          <option value="">Select a project type</option>
+          <option value="whole_home">Whole-home shutter installation</option>
+          <option value="some_openings">A few openings</option>
+          <option value="roll_down">Roll-down / motorized shutters</option>
+          <option value="not_sure">Not sure yet</option>
+        </select>
+      </div>
+    </label>
+    <label class="label">Email address
+      <input class="input" type="email" name="email" required>
+    </label>
+    <button type="button" class="button lead-form-next btn-green">Get my free quotes &rarr;</button>
+  </div>
+
+  <div class="lead-form-step lead-form-step-2" hidden>
+    <p class="lead-form-step-label">Step 2 of 2 — a few quick details for accurate quotes:</p>
+    <label class="label">Approximately how many openings?
+      <div class="select is-fullwidth">
+        <select name="opening_count">
+          <option value="1-5">1-5 openings</option>
+          <option value="6-10">6-10 openings</option>
+          <option value="11-20">11-20 openings</option>
+          <option value="whole_home">Whole home (20+)</option>
+          <option value="not_sure">Not sure</option>
+        </select>
+      </div>
+    </label>
+    <label class="label">Do you own this home?
+      <div class="select is-fullwidth">
+        <select name="is_homeowner" required>
+          <option value="">Select an option</option>
+          <option value="yes">Yes, I'm the homeowner</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    </label>
+    <label class="label">When are you hoping to start?
+      <div class="select is-fullwidth">
+        <select name="timeline">
+          <option value="asap">As soon as possible</option>
+          <option value="1-3_months">Within 1-3 months</option>
+          <option value="3-6_months">Within 3-6 months</option>
+          <option value="just_researching">Just researching</option>
+        </select>
+      </div>
+    </label>
+    <label class="label">First name
+      <input class="input" type="text" name="first_name" required>
+    </label>
+    <label class="label">Last name
+      <input class="input" type="text" name="last_name" required>
+    </label>
+    <label class="label">Phone number
+      <input class="input" type="tel" name="phone" required>
+      <small>Local installers use this only to follow up on your quote request.</small>
+    </label>
+
+    <label class="lead-form-consent">
+      <input type="checkbox" name="tcpa_consent" required>
+      <span>By checking this box and submitting, I expressly consent to be contacted by phone, text (SMS), or email about my project, including via automated technology (autodialer, pre-recorded messages), by Venice Hurricane Shutters and its partner installers. Consent is not a condition of purchase. Msg/data rates may apply.</span>
+    </label>
+
+    {{/* TODO — Turnstile sitekey placeholder. Widget must be created at deploy time (dash.cloudflare.com/turnstile). See TODO-DEPLOY.md. */}}
+    <div class="cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_TODO" data-action="venice-lead-v1"></div>
+
+    <button type="submit" class="button btn-green">Send my request &rarr;</button>
+    <p class="lead-form-privacy">&#128274; Your information is handled securely and shared only with the installers who prepare your quote. See our <a href="/privacy-policy/">privacy policy</a>.</p>
+  </div>
+
+  <div class="lead-form-success" hidden>
+    <h4>Thanks for your request!</h4>
+    <p>We're matching you with licensed local hurricane shutter installers in the Venice area. Most homeowners hear back within 24 hours.</p>
+  </div>
+</form>
+<script>
+(function() {
+  var form = document.getElementById('lead-form-{{ .step }}');
+  if (!form) return;
+  var next = form.querySelector('.lead-form-next');
+  if (next) {
+    next.addEventListener('click', function() {
+      var step1 = form.querySelector('.lead-form-step-1');
+      var step2 = form.querySelector('.lead-form-step-2');
+      var invalid = step1.querySelector('input:invalid, select:invalid, textarea:invalid');
+      if (!invalid) {
+        step1.hidden = true;
+        step2.hidden = false;
+      } else {
+        invalid.reportValidity();
+      }
+    });
+  }
+  var TURNSTILE_WORKER_URL = 'TURNSTILE_WORKER_URL_TODO';
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var step2 = form.querySelector('.lead-form-step-2');
+    var invalid2 = step2.querySelector('input:invalid, select:invalid, textarea:invalid');
+    if (invalid2) { invalid2.reportValidity(); return; }
+    var submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    var turnstileToken = form.querySelector('[name="cf-turnstile-response"]');
+    turnstileToken = turnstileToken ? turnstileToken.value : '';
+    if (!turnstileToken) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send my request →';
+      alert('The anti-spam check is not ready yet. Wait a couple seconds and try again.');
+      return;
+    }
+
+    fetch(TURNSTILE_WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: turnstileToken })
+    })
+      .then(function(r) { return r.json(); })
+      .then(function(result) {
+        if (!result.success) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send my request →';
+          alert('The anti-spam check failed. Reload the page and try again.');
+          return;
+        }
+        var data = new URLSearchParams(new FormData(form));
+        return fetch(form.action, { method: 'POST', body: data })
+          .then(function(r) { return r.ok ? r.json() : Promise.reject(r); })
+          .then(function() {
+            step2.hidden = true;
+            form.querySelector('.lead-form-success').hidden = false;
+          });
+      })
+      .catch(function() {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send my request →';
+        alert('Something went wrong sending your request. Please try again or contact us.');
+      });
+  });
+})();
+</script>

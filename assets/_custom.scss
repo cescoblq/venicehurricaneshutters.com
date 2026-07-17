@@ -1,0 +1,132 @@
+// Custom rules for Venice Hurricane Shutters, imported by assets/style.sass.
+// Written in SCSS (curly-brace) syntax deliberately, mixed with the theme's .sass entry point,
+// for anti-footprint variety vs. the pure-.sass fortmyersimpactwindows.com sibling.
+
+body { color: #1f2933; }
+
+.navbar-brand-text { font-weight: 700; font-size: 1.25rem; color: #0c3b5c; }
+.navbar.is-fresh { background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.08); }
+
+.btn-green { background: #1a8f4c; border-color: #1a8f4c; color: #fff; }
+.btn-green:hover, .btn-green:focus { background: #157a40; border-color: #157a40; color: #fff; }
+
+#lead-hero {
+  padding: 60px 0 40px;
+  background: linear-gradient(100deg, #f3f7fa 0%, #e5eef4 100%);
+}
+#lead-hero h1 { font-size: 2.3rem; line-height: 1.25; font-weight: 700; color: #0c3b5c; margin-bottom: 18px; }
+#lead-hero .lead-subtitle { font-size: 1.05rem; color: #444; line-height: 1.6; }
+.lead-reassurance { text-align: center; margin-top: 16px; font-size: .95rem; color: #333; }
+
+.trust-bar { background: #0c3b5c; color: #fff; text-align: center; padding: 10px 0; font-size: .9rem; }
+
+.lead-form {
+  background: #fff;
+  border-radius: 8px;
+  padding: 22px;
+  box-shadow: 0 2px 14px rgba(0,0,0,.08);
+  label.label { display: block; margin-bottom: 12px; font-weight: 600; font-size: .875rem; }
+  .input, .select select { width: 100%; margin-top: 4px; }
+  small { display: block; font-weight: normal; color: #888; margin-top: 4px; }
+  button { width: 100%; margin-top: 12px; }
+}
+.lead-form-consent {
+  font-weight: normal;
+  font-size: .8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+  input { width: auto; margin-top: 3px; flex-shrink: 0; }
+}
+.lead-form-step-label { font-weight: 600; margin-bottom: 10px; }
+.lead-form-privacy { font-size: .75rem; color: #888; margin-top: 10px; }
+.lead-form-success { text-align: center; padding: 10px 0; h4 { color: #0c3b5c; margin-bottom: 10px; } }
+.cf-turnstile { margin: 14px 0; }
+
+// Sections
+#lead-steps, #lead-cost, #lead-benefits, #lead-social, #lead-faq, #lead-finalcta, #lead-local {
+  padding: 64px 0;
+  h2 { font-size: 1.9rem; font-weight: 700; color: #0c3b5c; margin-bottom: 22px; }
+}
+#lead-steps, #lead-benefits, #lead-local { background: #fff; }
+#lead-cost, #lead-social { background: #f5f8fa; }
+#lead-faq { background: #fff; }
+#lead-finalcta {
+  background: #0c3b5c;
+  color: #eef3f7;
+  h2 { color: #fff; }
+  .lead-form { max-width: 520px; margin: 28px auto 0; }
+}
+
+.lead-steps h4 { font-weight: 700; color: #0c3b5c; margin-bottom: 8px; }
+.lead-transparency { margin-top: 26px; font-size: .875rem; color: #777; }
+
+.lead-benefits-img-wrap { border-radius: 8px; overflow: hidden; }
+.lead-benefits-img { width: 100%; border-radius: 8px; }
+.lead-benefits ul { list-style: none; padding: 0; margin-top: 18px; }
+.lead-benefits ul li { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 1rem; }
+.lead-benefits ul li strong { color: #0c3b5c; }
+
+.lead-cost-table {
+  margin: 18px 0;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  th { background: #0c3b5c; color: #fff; padding: 12px 15px; }
+  td { padding: 12px 15px; border-bottom: 1px solid #eee; }
+}
+
+.lead-local-points li { margin-bottom: 14px; }
+.lead-local-sources { font-size: .8rem; color: #888; }
+.lead-faq-item { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid #eee; }
+.lead-faq-item h4 { margin-bottom: 6px; font-weight: 700; color: #0c3b5c; }
+
+// Anti-scaled-content note: the content SEO block (#lead-local, sourced City Pack facts) sits
+// early in the DOM but is repositioned visually via flexbox `order` below — the
+// fortmyersimpactwindows.com sibling uses CSS grid-template-areas for the same effect;
+// implementation deliberately varied here for network-wide footprint diversity (CDC rule).
+#main-content {
+  display: flex;
+  flex-direction: column;
+  > #lead-hero { order: 1; }
+  > #trust-bar { order: 2; }
+  > #lead-local { order: 3; }
+  > #lead-steps { order: 4; }
+  > #lead-cost { order: 5; }
+  > #lead-benefits { order: 6; }
+  > #lead-social { order: 7; }
+  > #lead-faq { order: 8; }
+  > #lead-finalcta { order: 9; }
+}
+
+@media (max-width: 768px) {
+  #lead-hero .column.is-5, #lead-hero .column.is-7 { width: 100%; }
+}
+
+// secondary content pages (_default/single.html)
+.page-header { background: #f5f8fa; padding: 40px 0; margin-bottom: 10px; }
+.page-header h1 { color: #0c3b5c; font-weight: 700; }
+.post-content h2 { color: #0c3b5c; font-size: 1.5rem; margin-top: 1.8rem; }
+.post-content table { width: 100%; margin: 20px 0; }
+.post-content table th { background: #0c3b5c; color: #fff; padding: 10px; }
+.post-content table td { padding: 10px; border-bottom: 1px solid #eee; }
+.single-sidebar { position: sticky; top: 90px; }
+.single-sidebar-title { font-weight: 700; color: #0c3b5c; margin-bottom: 12px; }
+
+// footer
+.footer.footer-dark {
+  background: #16232f;
+  color: #cfd8e0;
+  padding: 50px 0 20px;
+  h5, h3 { color: #fff; margin-bottom: 15px; font-size: 1rem; }
+  p { color: #aab4bd; font-size: .875rem; }
+}
+.footer-disclaimer { font-size: .75rem; color: #8b96a1; margin-top: 10px; }
+.link-list { list-style: none; padding: 0; margin: 0; }
+.link-list li { margin-bottom: 8px; }
+.link-list a { color: #aab4bd; font-size: .875rem; text-decoration: none; }
+.link-list a:hover { color: #fff; }
+.footer-bottom { border-top: 1px solid #2a3a48; margin-top: 20px; padding-top: 20px; text-align: center; }
+.footer-bottom .copyright { color: #8b96a1; font-size: .8rem; margin: 0; }

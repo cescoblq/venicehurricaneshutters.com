@@ -1,0 +1,28 @@
+{{ define "main" }}
+{{ partial "navbar.html" . }}
+<section class="section is-medium page-header">
+  <div class="container">
+    <h1 class="title section-title">{{ .Title }}</h1>
+  </div>
+</section>
+<section class="section single-post">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8">
+        <div class="content post-content">
+          {{ .Content }}
+        </div>
+      </div>
+      {{ if ne .Params.showForm false }}
+      <div class="column is-4">
+        <div class="single-sidebar">
+          <h4 class="single-sidebar-title">Get free quotes</h4>
+          {{ partial "lead-form.html" (dict "step" (printf "page-%s" .File.BaseFileName) "context" .) }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ partial "footer.html" . }}
+{{ end }}

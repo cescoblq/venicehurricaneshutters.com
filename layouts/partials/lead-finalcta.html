@@ -1,0 +1,7 @@
+<section id="lead-finalcta" class="lead-finalcta">
+  <div class="container">
+    <h2 class="title is-3">{{ .Site.Data.lead.finalcta.title }}</h2>
+    <p>{{ .Site.Data.lead.finalcta.text }}</p>
+    {{ partial "lead-form.html" (dict "step" 2 "context" .) }}
+  </div>
+</section>

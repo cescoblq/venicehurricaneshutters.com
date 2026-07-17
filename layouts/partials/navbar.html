@@ -1,0 +1,28 @@
+{{/*
+  Site-level replacement for the theme's stock navbar.html (which reads a bespoke
+  Site.Params.navbar array). This version reuses the standard Hugo menu.main config
+  (hugo.toml) instead, and renders the brand as TEXT rather than an image — CDC rule:
+  the theme galleries all ship a placeholder logo image that's easy to forget to replace;
+  a text brand name (Site.Params.brandName) removes that whole failure mode.
+*/}}
+<nav class="navbar is-fresh is-transparent no-shadow" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item navbar-brand-text" href="/">{{ .Site.Params.brandName | default .Site.Title }}</a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbar-menu" class="navbar-menu is-static">
+      <div class="navbar-end">
+        {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}" class="navbar-item is-secondary">{{ .Name }}</a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</nav>
