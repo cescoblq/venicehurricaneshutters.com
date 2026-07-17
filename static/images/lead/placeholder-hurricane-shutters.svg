@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Hurricane shutters installation placeholder">
-  <rect width="800" height="600" fill="#0c3b5c"/>
-  <rect x="60" y="60" width="680" height="480" fill="none" stroke="#ffffff" stroke-width="6" opacity="0.35"/>
-  <line x1="220" y1="60" x2="220" y2="540" stroke="#ffffff" stroke-width="4" opacity="0.3"/>
-  <line x1="400" y1="60" x2="400" y2="540" stroke="#ffffff" stroke-width="4" opacity="0.3"/>
-  <line x1="580" y1="60" x2="580" y2="540" stroke="#ffffff" stroke-width="4" opacity="0.3"/>
-  <text x="400" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#ffffff" opacity="0.85">Photo placeholder — replace with real project photo</text>
-</svg>
