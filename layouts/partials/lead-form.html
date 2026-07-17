@@ -97,7 +97,7 @@
     </label>
 
     {{/* TODO — Turnstile sitekey placeholder. Widget must be created at deploy time (dash.cloudflare.com/turnstile). See TODO-DEPLOY.md. */}}
-    <div class="cf-turnstile" data-sitekey="TURNSTILE_SITEKEY_TODO" data-action="venice-lead-v1"></div>
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAD4ATsAV6tkH3wkK" data-action="venice-lead-v1"></div>
 
     <button type="submit" class="button btn-green">Send my request &rarr;</button>
     <p class="lead-form-privacy">&#128274; Your information is handled securely and shared only with the installers who prepare your quote. See our <a href="/privacy-policy/">privacy policy</a>.</p>
@@ -126,7 +126,7 @@
       }
     });
   }
-  var TURNSTILE_WORKER_URL = 'TURNSTILE_WORKER_URL_TODO';
+  var TURNSTILE_WORKER_URL = 'https://turnstile-siteverify-venicehurricaneshutters.francois-bloque.workers.dev';
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
