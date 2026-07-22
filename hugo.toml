@@ -1,6 +1,6 @@
 baseURL = "https://venicehurricaneshutters.com/"
 languageCode = "en-US"
-title = "Venice Hurricane Shutters"
+title = "Venice Hurricane Shutters — Compare Free Quotes"
 theme = "hugo-fresh"
 pagination.pagerSize = "6"
 enableRobotsTXT = true
