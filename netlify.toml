@@ -1,0 +1,12 @@
+[build]
+  command = "hugo --minify"
+  publish = "public"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/submit"
+  to = "/.netlify/functions/submit"
+  status = 200
+  force = true
