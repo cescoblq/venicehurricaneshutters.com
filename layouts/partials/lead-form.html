@@ -97,8 +97,7 @@
     </label>
 
     {{/* TODO — Turnstile sitekey placeholder. Widget must be created at deploy time (dash.cloudflare.com/turnstile). See TODO-DEPLOY.md. */}}
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAAD4ATsAV6tkH3wkK" data-action="venice-lead-v1"></div>
-
+    <input type="text" name="hp_confirm" value="" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
     <button type="submit" class="button btn-green">Send my request &rarr;</button>
     <p class="lead-form-privacy">&#128274; Your information is handled securely and shared only with the installers who prepare your quote. See our <a href="/privacy-policy/">privacy policy</a>.</p>
   </div>
@@ -112,6 +111,7 @@
 (function() {
   var form = document.getElementById('lead-form-{{ .step }}');
   if (!form) return;
+  var formLoadTime = Date.now();
   var next = form.querySelector('.lead-form-next');
   if (next) {
     next.addEventListener('click', function() {
@@ -126,8 +126,6 @@
       }
     });
   }
-  var TURNSTILE_WORKER_URL = 'https://turnstile-siteverify-venicehurricaneshutters.francois-bloque.workers.dev';
-
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     var step2 = form.querySelector('.lead-form-step-2');
@@ -137,35 +135,20 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
-    var turnstileToken = form.querySelector('[name="cf-turnstile-response"]');
-    turnstileToken = turnstileToken ? turnstileToken.value : '';
-    if (!turnstileToken) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send my request →';
-      alert('The anti-spam check is not ready yet. Wait a couple seconds and try again.');
+    if (form.querySelector('[name="hp_confirm"]').value) {
+      step2.hidden = true;
+      form.querySelector('.lead-form-success').hidden = false;
       return;
     }
 
-    fetch(TURNSTILE_WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ token: turnstileToken })
-    })
-      .then(function(r) { return r.json(); })
-      .then(function(result) {
-        if (!result.success) {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send my request →';
-          alert('The anti-spam check failed. Reload the page and try again.');
-          return;
-        }
-        var data = new URLSearchParams(new FormData(form));
-        return fetch(form.action, { method: 'POST', body: data })
-          .then(function(r) { return r.ok ? r.json() : Promise.reject(r); })
-          .then(function() {
-            step2.hidden = true;
-            form.querySelector('.lead-form-success').hidden = false;
-          });
+    var data = new URLSearchParams(new FormData(form));
+    data.set('elapsed_ms', String(Date.now() - formLoadTime));
+
+    fetch(form.action, { method: 'POST', body: data })
+      .then(function(r) { return r.ok ? r.json() : Promise.reject(r); })
+      .then(function() {
+        step2.hidden = true;
+        form.querySelector('.lead-form-success').hidden = false;
       })
       .catch(function() {
         submitBtn.disabled = false;

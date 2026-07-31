@@ -15,10 +15,23 @@ exports.handler = async function (event) {
   }
   try {
     const origin = `https://${event.headers.host}`;
+
+    const params = new URLSearchParams(event.body);
+    const isBot = params.get("hp_confirm") || Number(params.get("elapsed_ms")) < 2000;
+    if (isBot) {
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ success: true }),
+      };
+    }
+    params.delete("hp_confirm");
+    params.delete("elapsed_ms");
+
     const upstream = await fetch("https://n8n.byteblast.ovh/webhook/niches-leads-hurricane-shutters-us", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded", "X-Site-Origin": origin },
-      body: event.body,
+      body: params.toString(),
     });
     const text = await upstream.text();
     return {
